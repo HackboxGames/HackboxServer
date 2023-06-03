@@ -19,7 +19,7 @@ let versionCheckedSinceLastRestart = false;
 global.rootDirectory = path.resolve(path.normalize("../"));
 global.bundlesDirectory = path.resolve(rootDirectory, "bundles");
 global.modsDirectory = path.resolve(rootDirectory, "mods");
-global.hbDirectory = path.resolve(rootDirectory, "hackbox");
+global.hbDirectory = path.resolve(path.normalize("./"))
 
 global.gameAssetFiles = {};
 global.gameAssetBundles = {};
