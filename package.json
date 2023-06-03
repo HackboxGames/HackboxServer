@@ -1,0 +1,48 @@
+{
+  "name": "hackbox",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node ./src/server/server.js"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@mantine/carousel": "^6.0.11",
+    "@mantine/core": "^6.0.11",
+    "@mantine/dates": "^6.0.11",
+    "@mantine/dropzone": "^6.0.11",
+    "@mantine/form": "^6.0.11",
+    "@mantine/hooks": "^6.0.11",
+    "@mantine/modals": "^6.0.11",
+    "@mantine/notifications": "^6.0.11",
+    "@mantine/nprogress": "^6.0.11",
+    "@mantine/prism": "^6.0.11",
+    "@mantine/spotlight": "^6.0.11",
+    "@mantine/tiptap": "^6.0.11",
+    "@tabler/icons-react": "^2.20.0",
+    "@tiptap/extension-link": "^2.0.3",
+    "@tiptap/react": "^2.0.3",
+    "@tiptap/starter-kit": "^2.0.3",
+    "autoprefixer": "^10.4.14",
+    "dayjs": "^1.11.7",
+    "dotenv": "^16.0.3",
+    "embla-carousel-react": "^8.0.0-rc04",
+    "express": "^4.18.2",
+    "express-http-proxy": "^1.6.3",
+    "fs": "^0.0.1-security",
+    "jquery": "^3.7.0",
+    "module-alias": "^2.2.2",
+    "next": "^13.4.3",
+    "node-html-parser": "^6.1.5",
+    "path": "^0.12.7",
+    "postcss": "^8.4.24",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.2"
+  },
+  "_moduleAliases": {
+    "@hackbox": "./src/functions"
+  }
+}
