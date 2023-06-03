@@ -4,6 +4,8 @@
 
 ⚠️ This project is still in development. ⚠️
 
+ℹ️ Updated documentation will be available soon. ℹ️
+
 This is the server for the Hackbox project. Looking for the client? [Click here](https://github.com/HackboxGames/HackboxClient)
 ## Installation
 
