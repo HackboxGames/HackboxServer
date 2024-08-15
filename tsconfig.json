@@ -1,47 +1,59 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "outDir": "dist",
-        "strict": true,
-        "declaration": true,
-        "esModuleInterop": true,
-        "moduleResolution": "node",
-        "baseUrl": ".",
-        "paths": {
-            "@logger": [
-                "src/util/logger"
-            ],
-            "@environment": [
-                "src/util/environment"
-            ],
-            "@hackbox": [
-                "src/HackboxServer"
-            ],
-            "@hackbox/manager": [
-                "src/managers/Manager"
-            ],
-            "@hackbox/managers": [
-                "src/managers"
-            ],
-            "@hackbox/managers/*": [
-                "src/managers/*"
-            ],
-        },
-        "types": [
-            "node"
-        ],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "noEmit": false,
-        "incremental": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist",
+    "strict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@logger": [
+        "src/util/logger"
+      ],
+      "@environment": [
+        "src/util/environment"
+      ],
+      "@hackbox": [
+        "src/HackboxServer"
+      ],
+      "@hackbox/manager": [
+        "src/managers/Manager"
+      ],
+      "@hackbox/managers": [
+        "src/managers"
+      ],
+      "@hackbox/managers/*": [
+        "src/managers/*"
+      ]
     },
-    "include": [
-        "src/**/*.ts"
+    "types": [
+      "node"
     ],
-    "exclude": [
-        "node_modules"
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noEmit": false,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
     ]
+  },
+  "include": [
+    "src/**/*.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

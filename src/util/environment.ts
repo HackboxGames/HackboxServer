@@ -9,6 +9,7 @@ type ENVIRONMENT = {
     HACKBOX_SERVER_ENV: string;
     HACKBOX_SERVER_TYPE: string;
     HACKBOX_SERVER_OS: NodeJS.Platform,
+    HACKBOX_ROOT_DIR: string;
     HACKBOX_SRC_DIR: string;
     HACKBOX_CONTENT_DIR: string;
     HACKBOX_DATA_DIR: string;
@@ -28,6 +29,7 @@ const environment: ENVIRONMENT = {
     HACKBOX_SERVER_ENV: "",
     HACKBOX_SERVER_TYPE: "",
     HACKBOX_SERVER_OS: os.platform(),
+    HACKBOX_ROOT_DIR: "",
     HACKBOX_SRC_DIR: "",
     HACKBOX_CONTENT_DIR: "",
     HACKBOX_DATA_DIR: "",
@@ -63,6 +65,9 @@ export function setupEnvironment(): void {
     } else {
         environment.HACKBOX_SERVER_TYPE = "standalone";
     }
+
+    // Set up the root directory
+    environment.HACKBOX_ROOT_DIR = path.resolve(path.join(__dirname, "..", ".."));
 
     // Set up the src directory
     environment.HACKBOX_SRC_DIR = path.resolve(path.join(__dirname, ".."));
@@ -245,8 +250,8 @@ export function setupEnvironment(): void {
         process.env[key] = environment[key as keyof ENVIRONMENT];
     }
 
-    console.log(environment);
-    console.log(process.env);
+    //console.log(environment);
+    //console.log(process.env);
 
     logger.info("Environment setup complete!");
 }
