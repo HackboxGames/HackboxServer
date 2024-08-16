@@ -26,6 +26,9 @@
       ],
       "@hackbox/managers/*": [
         "src/managers/*"
+      ],
+      "@public/*": [
+        "public/*"
       ]
     },
     "types": [

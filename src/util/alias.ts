@@ -8,5 +8,5 @@ moduleAlias.addAliases({
     "@environment": path.resolve(srcDir, "util", "environment"),
     "@hackbox": path.resolve(srcDir, "HackboxServer"),
     "@hackbox/manager": path.resolve(srcDir, "managers", "Manager"),
-    "@hackbox/managers": path.resolve(srcDir, "managers"),
+    "@hackbox/managers": path.resolve(srcDir, "managers")
 });
