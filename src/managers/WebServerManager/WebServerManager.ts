@@ -39,7 +39,8 @@ export default class WebServerManager extends Manager {
 
     public async start(): Promise<void> {
         await this.server.listen({
-            port: 2014
+            port: 2014,
+            host: "0.0.0.0"
         });
     }
 

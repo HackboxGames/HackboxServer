@@ -24,10 +24,6 @@
     {
       "from": "src/managers/DatabaseManager/SQLiteManager/schema.prisma",
       "to": "dist/managers/DatabaseManager/SQLiteManager/schema.prisma"
-    },
-    {
-      "from": "src/managers/DatabaseManager/SQLiteManager/migrations/**/*",
-      "to": "dist/managers/DatabaseManager/SQLiteManager/migrations/"
     }
   ],
   "dependencies": {
