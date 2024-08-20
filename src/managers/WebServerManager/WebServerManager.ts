@@ -9,15 +9,11 @@ import proxy from "@fastify/http-proxy";
 export default class WebServerManager extends Manager {
 
     private server!: FastifyInstance;
-    protected nextApp!: NextServer;
-    protected nextHandler!: RequestHandler;
+    private nextApp!: NextServer;
+    private nextHandler!: RequestHandler;
 
     public initialize(): void {
         this.server = fastify();
-        this.server.register(proxy, {
-            upstream: 'https://jackbox.tv',
-            prefix: '/proxy/jackbox'
-        });
     }
 
     public async setup(): Promise<void> {
@@ -28,9 +24,13 @@ export default class WebServerManager extends Manager {
         this.nextHandler = this.nextApp.getRequestHandler();
         await this.nextApp.prepare();
         this.server.addHook("preHandler", async (req, res) => {
-            if (req.headers["sec-fetch-dest"] == "iframe") {
-                req.raw.url = '/proxy/jackbox' + req.url;
+            if ((req.headers.referer?.includes("/proxy/jackbox") || req.headers["sec-fetch-dest"] == "iframe") && req.url !== "/proxy/jackbox") {
+                return res.redirect("https://jackbox.tv" + req.url, 301);
             }
+        });
+        this.server.register(proxy, {
+            upstream: 'https://jackbox.tv',
+            prefix: '/proxy/jackbox'
         });
         this.server.all("*", (req, res) => {
             this.nextHandler(req.raw, res.raw);

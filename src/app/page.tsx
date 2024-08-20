@@ -1,34 +1,9 @@
 'use client'
 
 import { Button } from "@nextui-org/react";
-import { useEffect, useRef } from "react";
-import { createRoot, hydrateRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { waitForSelector } from "@public/scripts/util";
-
-function redirect(jackbox: HTMLIFrameElement) {
-    const head = jackbox.contentDocument?.getElementsByTagName("head")[0];
-    const links = head?.getElementsByTagName("link");
-    if (links) {
-        for (let i = 0; i < links?.length; i++) {
-            const link = links[i];
-            link.href = "https://jackbox.tv" + new URL(link.href).pathname;
-        }
-    }
-    const scripts = head?.getElementsByTagName("script");
-    if (scripts) {
-        for (let i = 0; i < scripts?.length; i++) {
-            const script = scripts[i];
-            let newScript = document.createElement("script");
-            if (script.src.startsWith("/")) {
-                newScript.src = "https://jackbox.tv" + script.src;
-            } else if (script.src) {
-                newScript.src = "https://jackbox.tv" + new URL(script.src).pathname;
-            }
-            newScript.innerHTML = script.innerHTML;
-            script.replaceWith(newScript);
-        }
-    }
-}
+import { useEffect } from "react";
 
 function addCSSGlobals(jackbox: HTMLIFrameElement) {
     const head = jackbox.contentDocument?.getElementsByTagName("head")[0];
@@ -59,20 +34,19 @@ function addUserProfile(app: HTMLElement) {
 
 
 async function jackboxLoaded() {
-    console.log("Hello, World!");
+
+    // SOMETHING IS WRONG WITH THIS CODE
+    // Rare case where waitForSelector never resolves
+    // TODO: 
+    // fix waitForSelector instead of reusing code from old project
+    // fix mobile sometimes firing this event twice, causing the mods to be undone and for react to yell at me
 
     const jackbox = document.getElementById("jackbox") as HTMLIFrameElement;
     const app = jackbox.contentDocument?.getElementById("app");
 
-    if (!jackbox) {
-        return;
-    }
-
     if (!app) {
         return;
     }
-
-    redirect(jackbox);
     
     await waitForSelector("#button-join", app);
     
@@ -85,7 +59,8 @@ export default function RootPage() {
     return (
         <iframe
             id="jackbox"
-            src="/proxy/jackbox/"
+            title="Jackbox"
+            src="/proxy/jackbox"
             allow="camera;microphone"
             className="fixed inset-0 w-full h-full"
             onLoad={jackboxLoaded}
